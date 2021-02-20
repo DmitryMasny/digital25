@@ -10,7 +10,7 @@ export const CreatePage = () => {
   const [link, setLink] = useState('')
 
   useEffect(() => {
-    window.M.updateTextFields()
+
   }, [])
 
   const pressHandler = async event => {
