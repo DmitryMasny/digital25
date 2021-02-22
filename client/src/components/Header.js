@@ -1,14 +1,17 @@
 import React, {useContext} from 'react'
 import {NavLink, useHistory} from 'react-router-dom'
-import {AuthContext} from '../context/AuthContext'
 
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import AppBar from '@material-ui/core/AppBar'
+import Button from '@material-ui/core/Button'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Link from '@material-ui/core/Link'
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
+
+import { authSelectors } from 'selectors/authSelectors'
+import { useSelector } from "react-redux"
+import { authActions } from "../actions/authActions";
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -16,6 +19,12 @@ const useStyles = makeStyles((theme) => ({
       margin: 0,
       padding: 0,
       listStyle: 'none',
+    },
+    a: {
+      color: 'inherit'
+    },
+    button: {
+      color: 'inherit'
     },
   },
   appBar: {
@@ -25,10 +34,11 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
   },
   toolbarTitle: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   link: {
     margin: theme.spacing(1, 1.5),
+    textDecoration: 'none'
   },
   heroContent: {
     padding: theme.spacing(8, 0, 6),
@@ -53,55 +63,51 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
-}));
+}))
+
 
 
 export const Header = () => {
   const history = useHistory()
-  const auth = useContext(AuthContext)
 
-  const classes = useStyles();
+  const isAuthorized = useSelector(authSelectors.isAuthorized)
+  const classes = useStyles()
 
   const logoutHandler = event => {
-    event.preventDefault()
-    auth.logout()
+    authActions.logout()
     history.push('/')
   }
 
   return (
       <AppBar position="fixed" color="default" elevation={0} className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-          <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-            Company name
+        <Toolbar className={classes.toolbar} >
+          <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle} >
+            <NavLink to="/links" >
+              Digital 25
+            </NavLink>
           </Typography>
           <nav>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Features
-            </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Enterprise
-            </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Support
-            </Link>
+            <NavLink to="/create">
+              <Link variant="button" color="textPrimary" className={classes.link}>
+                Создать
+              </Link>
+            </NavLink>
+            <NavLink  to="/links" className={classes.link}>
+                Ссылки
+            </NavLink>
           </nav>
-          <Button href="#" color="primary" variant="outlined" className={classes.link}>
-            Login
-          </Button>
+          { isAuthorized ?
+            <Button color="primary" variant="outlined" className={classes.link} onClick={logoutHandler}>
+              Выйти
+            </Button>
+            :
+            <NavLink to="/auth"  className={classes.link}>
+              <Button color="primary" variant="outlined">
+                Войти
+              </Button>
+            </NavLink>
+          }
         </Toolbar>
       </AppBar>
-  )
-
-  return (
-    <nav>
-      <div className="nav-wrapper blue darken-1" style={{ padding: '0 2rem' }}>
-        <span className="brand-logo">Сокращение ссылок</span>
-        <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><NavLink to="/create">Создать</NavLink></li>
-          <li><NavLink to="/links">Ссылки</NavLink></li>
-          <li><a href="/" onClick={logoutHandler}>Выйти</a></li>
-        </ul>
-      </div>
-    </nav>
   )
 }
