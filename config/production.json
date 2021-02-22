@@ -1,13 +1,6 @@
 {
-<<<<<<< HEAD
   "port": 80,
   "jwtSecret": "Shmise Digital25",
   "mongoUri": "mongodb+srv://shmise_25:sfQf1YlnnotKiLAz@cluster0.k6adj.mongodb.net/app?retryWrites=true&w=majority",
   "baseUrl": "http://434221-shmise.tmweb.ru"
-=======
-  "port": 5000,
-  "jwtSecret": "Shmise Digital25",
-  "mongoUri": "mongodb+srv://Shmise:Yffsc3zd@cluster0.k6adj.mongodb.net/app?retryWrites=true&w=majority",
-  "baseUrl": "http://localhost:5000"
->>>>>>> 4e4942e124beafe6efcad292a5087b1bc9e46348
 }

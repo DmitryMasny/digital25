@@ -4,3 +4,4 @@ node_modules
 /!/
 client/package-lock.json
 client/tsconfig.json
+/package-lock.json
