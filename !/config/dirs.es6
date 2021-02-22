@@ -1,1 +1,0 @@
-export const IMG_DIR = '/spa-img/';
