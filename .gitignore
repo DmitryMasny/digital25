@@ -1,2 +1,6 @@
 .idea
 node_modules
+!/config/production.json
+/!/
+client/package-lock.json
+client/tsconfig.json

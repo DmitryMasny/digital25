@@ -1,6 +1,6 @@
 {
-  "port": 1000,
+  "port": 7000,
   "jwtSecret": "shmise",
   "mongoUri": "mongodb+srv://Shmise:Yffsc3zd@cluster0.k6adj.mongodb.net/app?retryWrites=true&w=majority",
-  "baseUrl": "http://localhost:1000"
+  "baseUrl": "http://localhost:7000"
 }

@@ -1,7 +1,7 @@
 {
-  "name": "mern-course",
-  "version": "1.0.0",
-  "description": "Mern stack",
+  "name": "digital25",
+  "version": "0.1.0",
+  "description": "digital25 desc",
   "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app.js",
@@ -15,7 +15,7 @@
     "mern",
     "react"
   ],
-  "author": "Vladilen Minin <vladilen.m@yandex.ru>",
+  "author": "Dmitry Masny <shmise25@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -30,6 +30,7 @@
   "devDependencies": {
     "concurrently": "^5.0.2",
     "cross-env": "^6.0.3",
+    "eslint-plugin-react": "^7.22.0",
     "nodemon": "^2.0.2"
   }
 }
