@@ -1,4 +1,4 @@
-import {post} from "../libs/request";
+import {get, post} from "../libs/request";
 import { dispatch } from 'libs/store'
 import { LS } from 'actions/localStorage'
 import { AUTH } from 'consts/actionTypes'
@@ -10,7 +10,12 @@ import { AUTH } from 'consts/actionTypes'
  */
 export const authActions = {
   /** User registration */
-  register: ( formData ) => post( AUTH.REGISTER, formData),
+  register: ( formData ) => post( AUTH.REGISTER, {
+    email: formData.email.replace(/\s/g, ''),
+    password: formData.password.replace(/\s/g, ''),
+  }),
+  /** Verify reg email */
+  verify: ( {userId, code} ) => get( AUTH.VERIFY, [userId, code] ),
 
   /** User login */
   login: ( formData, force = false ) => force ?

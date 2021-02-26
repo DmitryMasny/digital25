@@ -1,42 +1,40 @@
 import React from 'react'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 // import {LinksPage} from './pages/LinksPage'
 // import {CreatePage} from './pages/CreatePage'
 // import {DetailPage} from './pages/DetailPage'
-import {AuthPage} from './pages/AuthPage'
-import {StartPage} from './pages/StartPage'
+import { AuthPage } from './pages/AuthPage'
+import { StartPage } from './pages/StartPage'
+
+import { routeUrls } from 'consts/urls'
 
 export const useRoutes = isAuthenticated => {
-    if ( isAuthenticated ) {
-        return (
-            <Switch>
-                {/*<Route path="/links" exact>*/}
-                {/*    <LinksPage/>*/}
-                {/*</Route>*/}
-                {/*<Route path="/create" exact>*/}
-                {/*    <CreatePage/>*/}
-                {/*</Route>*/}
-                {/*<Route path="/detail/:id">*/}
-                {/*  <DetailPage/>*/}
-                {/*</Route>*/}
-                <Route path="/auth">
-                  <AuthPage/>
-                </Route>
-                <Redirect to="/create"/>
-            </Switch>
-        )
-    }
 
-    return (
-        <Switch>
-            <Route path="/" exact>
-                <StartPage/>
-            </Route>
+  return (
+    <Switch>
+      <Route path="/" exact>
+        <StartPage/>
+      </Route>
+      { isAuthenticated ? <>
 
-            <Route path="/auth">
-                <AuthPage/>
-            </Route>
-            <Redirect to="/"/>
-        </Switch>
-    )
+        {/*<Route path="/links" exact>*/ }
+        {/*    <LinksPage/>*/ }
+        {/*</Route>*/ }
+        {/*<Route path="/create" exact>*/ }
+        {/*    <CreatePage/>*/ }
+        {/*</Route>*/ }
+        {/*<Route path="/detail/:id">*/ }
+        {/*  <DetailPage/>*/ }
+        {/*</Route>*/ }
+      </> : <>
+        <Route path={routeUrls.AUTH}>
+          <AuthPage/>
+        </Route>
+      </>
+      }
+
+      <Redirect to="/"/>
+    </Switch>
+  )
+
 }

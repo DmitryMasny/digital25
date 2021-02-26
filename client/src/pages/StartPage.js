@@ -19,7 +19,7 @@ const useStyles = makeStyles( ( theme ) => ({
 
 export const StartPage = () => {
   const classes = useStyles();
-
+console.log('asdasd')
   return (
     <Container component="main" maxWidth="lg">
       <img src={svgSettings} alt=""/>

@@ -101,11 +101,18 @@ export const Header = () => {
               Выйти
             </Button>
             :
-            <NavLink to="/auth"  className={classes.link}>
+            <>
+            <NavLink to="/auth/login"  className={classes.link}>
               <Button color="primary" variant="outlined">
                 Войти
               </Button>
             </NavLink>
+            <NavLink to="/auth/reg"  className={classes.link}>
+              <Button color="primary" variant="outlined">
+                Регистрация
+              </Button>
+            </NavLink>
+            </>
           }
         </Toolbar>
       </AppBar>

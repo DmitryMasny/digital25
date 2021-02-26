@@ -1,4 +1,5 @@
 export const AUTH = {
-  REGISTER: 'регистриция',
+  REGISTER: 'регистрация',
   LOGIN: 'авторизация',
+  VERIFY: 'отправка кода авторизации',
 }

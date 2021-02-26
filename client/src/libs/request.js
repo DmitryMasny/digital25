@@ -18,6 +18,13 @@ export const getUrlByType = ( type ) => {
   }
   return url
 }
+export const putDataToUrl = ( url, data ) => {
+  if ( !data ) return  url
+
+  if ( !Array.isArray(data) ) data = [data]
+  data.map( d => url += `/${d}`)
+  return url
+}
 
 const emulatePing = false;
 
@@ -44,7 +51,7 @@ export const post = ( type, data, putResponseInRedux ) => new Promise( ( resolve
         const resData = {
           ...res.data, isLoading: false
         }
-        if ( putResponseInRedux && resData )dispatch( {
+        if ( putResponseInRedux )dispatch( {
           type: type,
           payload: resData
         } )
@@ -66,20 +73,21 @@ export const post = ( type, data, putResponseInRedux ) => new Promise( ( resolve
     } )
 } )
 
-export const get = ( type ) => new Promise( ( resolve, reject ) => {
+export const get = ( type, data, putResponseInRedux ) => new Promise( ( resolve, reject ) => {
   dispatch( {
     type: type,
     payload: { isLoading: true }
   } )
+  console.log('==>', {url: getUrlByType( type ), type})
   axios
     .get(
-      getUrlByType( type )
+      putDataToUrl(getUrlByType( type ), data)
     )
     .then( res => {
       const resData = {
         ...res.data, isLoading: false
       }
-      dispatch( {
+      if ( putResponseInRedux )dispatch( {
         type: type,
         payload: resData
       } )
