@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 // import {LinksPage} from './pages/LinksPage'
 // import {CreatePage} from './pages/CreatePage'
 // import {DetailPage} from './pages/DetailPage'
-import { AuthPage } from './pages/AuthPage'
+import { AuthPage } from './pages/AuthPage/AuthPage'
 import { StartPage } from './pages/StartPage'
 
 import { routeUrls } from 'consts/urls'

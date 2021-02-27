@@ -4,6 +4,7 @@ const schema = new Schema({
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
   verifyCode: {type: Number},
+  changePwdCode: {type: Number},
   links: [{ type: Types.ObjectId, ref: 'Link' }]
 })
 

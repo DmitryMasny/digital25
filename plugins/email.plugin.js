@@ -31,10 +31,10 @@ const sendEMail = ({toEmail, html}) => {
   })
 }
 
-const sendVerificationEmail = ({toEmail, link}) => {
+const sendVerificationEmail = ({toEmail, link, html}) => {
   return sendEMail({
     toEmail,
-    html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
+    html : html || "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
   })
 }
 

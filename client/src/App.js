@@ -20,6 +20,7 @@ import lime from '@material-ui/core/colors/lime';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from '@material-ui/core/styles';
 import grey from "@material-ui/core/colors/grey";
+import { Footer } from "./components/Footer";
 
 
 const theme = createMuiTheme( {
@@ -90,6 +91,7 @@ function App() {
             <div className={ classes.container }>
               { routes }
             </div>
+            <Footer/>
           </div>
 
           <ToastWrapper/>
